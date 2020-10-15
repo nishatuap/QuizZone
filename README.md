@@ -1,2 +1,2 @@
 # QuizZone
- Software Engineering Lab
+ Software Engineering Lab Project
