@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">My Quizzes</li>
+    </ol>
+  </nav>
+  <center><h2 style="color:#70BD0E"> My Quiz List </h2></center>
+<center>
+  <a href="{% url 'teachers:quiz_add' %}" class="btn btn-primary mb-3" role="button">Add quiz</a>
+
+</center>
+
+  <div class="card">
+    <table class="table mb-0">
+      <thead>
+        <tr>
+          <th>Quiz</th>
+          <th>Course</th>
+
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for quiz in quizzes %}
+          <tr>
+            <td bgcolor="#DAF7A6" ><a href="{% url 'teachers:quiz_change' quiz.pk %}">{{ quiz.name }}</a></td>
+            <td >{{ quiz.subject.get_html_badge }}</td>
+<td class="text-right">
+              <a href="{% url 'teachers:quiz_results' quiz.pk %}" class="btn btn-primary">View results</a>
+            </td>
+            <td class="align-middle"></td>
+            <td class="text-right">
+              </td>
+          </tr>
+        {% empty %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<center><h1 style="color:Red">Thank you for your response.</h1>
+<h2>Check your result...</h2>
+   <a class="btn btn-primary mb-3" role="button" href="{% url 'students:taken_quiz_list' %}">Result Board</a>
+</center>
+{% endblock %}

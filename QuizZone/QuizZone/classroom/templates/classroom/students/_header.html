@@ -1,0 +1,17 @@
+
+<center><h2>My Attemped Quizzes</h2></center>
+
+
+
+
+<ul class="nav nav-tabs mb-3">
+  <li class="nav-item">
+    <a class="nav-link{% if active == 'new' %} active{% endif %}" href="{% url 'students:quiz_list' %}">New Quiz</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link{% if active == 'taken' %} active{% endif %}" href="{% url 'students:taken_quiz_list' %}">Result Board</a>
+  </li>
+  <!--li class="nav-item">
+    <a class="nav-link{% if active == 'students' %} active{% endif %}" href="{% url 'students:student_list' %}">Students</a>
+  </li!-->
+</ul>

@@ -1,0 +1,42 @@
+ {% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'datatables/dataTables.bootstrap4.min.css' %}">
+{% endblock %}
+
+{% block content %}
+  {% include 'classroom/students/_header.html' with active='new' %}
+  <p class="text-muted">
+ <center>Registered Courses:<br>{% for subject in user.student.interests.all %} <br>{{ subject.get_html_badge }}<br>{% endfor %}</center>
+    <a href="{% url 'students:student_interests' %}"><small></small></a>
+  </p>
+
+  <table class="table mb-0"  >
+    <thead>
+      <tr>
+        <th>Quiz</th>
+        <th class="d-none d-sm-table-cell">Courses</th>
+
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for quiz in quizzes %}
+        <tr bgcolor="#DAF7A6">{% if quiz.subject.id in student_subjects %}{%endif%}>
+          <td class="align-middle">{{ quiz.name }}</td>
+          <td class="align-middle d-none d-sm-table-cell">{{ quiz.subject.get_html_badge }}</td>
+
+          <td class="text-right" data-orderable="false">
+            <a href="{% url 'students:take_quiz' quiz.pk %}" >Start Quiz</a>
+          </td>
+        </tr>
+      {% empty %}
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}
